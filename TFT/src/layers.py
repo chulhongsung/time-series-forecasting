@@ -241,7 +241,7 @@ class QuantileOutput(K.layers.Layer):
         for j in range(len(self.quantile)):
             tmp_quantile_list = []
             for t in range(self.tau):
-                tmp_quantile = self.quantile_dense[j](varphi[:, -self.tau + j, :])
+                tmp_quantile = self.quantile_dense[j](varphi[:, -self.tau + t, :])
                 tmp_quantile_list.append(tf.expand_dims(tmp_quantile, axis=1))
             total_output_list.append(tf.transpose(tf.concat(tmp_quantile_list, axis=1), perm=[0, 2, 1]))
 
