@@ -1,8 +1,7 @@
-#%%
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras as K
-#%%
+
 def get_angles(pos, i, d_model):
     angle_rates = 1 / np.power(10000, (2 * (i//2)) / np.float32(d_model))
     return pos * angle_rates
@@ -21,7 +20,7 @@ def positional_encoding(position, d_model):
     pos_encoding = angle_rads[np.newaxis, ...]
 
     return tf.cast(pos_encoding, dtype=tf.float32)
-#%%
+
 def scaled_dot_product_attention(q, k, v, d_model, mask):
     matmul_qk = tf.matmul(q, k, transpose_b=True)  # (..., seq_len_q, seq_len_k)
 
@@ -33,8 +32,6 @@ def scaled_dot_product_attention(q, k, v, d_model, mask):
     if mask is not None:
         scaled_attention_logits += (mask * -1e9)
 
-    # softmax is normalized on the last axis (seq_len_k) so that the scores
-    # add up to 1.
     attention_weights = tf.nn.softmax(scaled_attention_logits, axis=-1)  # (..., seq_len_q, seq_len_k)
 
     output = tf.matmul(attention_weights, v)  # (..., seq_len_q, depth_v)
@@ -85,7 +82,7 @@ class MultiHeadAttention(K.layers.Layer):
         output = self.dense(concat_attention)  # (batch_size, seq_len_q, d_model)
 
         return output
-#%%
+
 class AddPosition(K.layers.Layer):
     def __init__(self, d_model, timesteps):
         super(AddPosition, self).__init__()
@@ -94,7 +91,7 @@ class AddPosition(K.layers.Layer):
         
     def call(self, x, t):
         return self.layer_norm(x + self.posit_matrix[:, t:t+1 :])
-#%%
+
 class AddPosition2(K.layers.Layer):
     def __init__(self, d_model, timesteps):
         super(AddPosition2, self).__init__()
@@ -103,7 +100,7 @@ class AddPosition2(K.layers.Layer):
         
     def call(self, x):
         return self.layer_norm(x + self.posit_matrix)
-#%%
+
 class GenLayer(K.layers.Layer):
     def __init__(self, d_model, d_latent, timesteps, num_heads):
         super(GenLayer, self).__init__()
@@ -173,7 +170,7 @@ class GenLayer(K.layers.Layer):
         var = tf.concat(var_list, axis=1) # (batch_size, timesteps, d_latent)
         
         return w[:, 1:, :], z, w_hat, mean, var
-#%%
+
 class InfLayer(K.layers.Layer):
     def __init__(self, d_model, d_latent, num_heads):
         super(InfLayer, self).__init__()
@@ -190,7 +187,7 @@ class InfLayer(K.layers.Layer):
         z = mean + eps
             
         return z, mean, tf.math.softplus(self.dense2(hw))
-#%%
+
 class ProTran(K.models.Model):
     def __init__(self, d_output, d_model, d_latent, timesteps, current_time, num_heads, num_layers):
         super(ProTran, self).__init__()   
