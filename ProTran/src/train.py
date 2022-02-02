@@ -1,4 +1,3 @@
-#%%
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras as K
@@ -6,6 +5,8 @@ from tensorflow import keras as K
 import pandas as pd
 
 from model import ProTran
+
+import matplotlib.pyplot as plt
 
 ### Data 
 df_stock = pd.read_csv("../stock_data/stock_sample.csv", index_col=0)
@@ -37,7 +38,7 @@ test_sample = input_stock[120:, :]
 test_output = y_stock[120:, :]
 test_infer = infer_stock[120:, :]
 
-#%% Model
+### Model
 protran_model = ProTran(5, 60, 16, 8, 5, 4, 2)
 
 def compute_loss(model, x):
@@ -66,14 +67,10 @@ for epoch in range(EPOCHS):
     if (epoch + 1) % 50 == 0 : 
         template = 'EPOCH: {0}, Train Loss: {1:0.4f}'
         print(template.format(epoch+1, train_loss.result()))
-#%%
+
 x_pred, _, gen_mean, gen_var, __, inf_mean, inf_var = protran_model(train_infer)
-#%%
-import matplotlib.pyplot as plt
 
 plt.plot(np.arange(tf.reshape(x_pred[::8, :, :, 0], [-1]).shape[0]), tf.reshape(x_pred[::8, :, :, 0], [-1]).numpy(), color='orange', label='')
 plt.plot(np.arange(tf.reshape(x_pred[::8, :, :, 0], [-1]).shape[0]), np.reshape(train_infer[::8, :, 0], [-1]), color='green', label='')
 plt.legend()
 plt.show()
-#%%
-protran_model(train_infer)
