@@ -24,8 +24,8 @@ def stock_data_generator(df, k, tau):
         infer_data[i, :, :] = df.iloc[i:i+k+tau, :]   
     return input_data, target, infer_data
 
-k = 5
-tau = 3
+k = 10
+tau = 10
 
 input_stock, y_stock, infer_stock = stock_data_generator(df_stock, k, tau)
 
