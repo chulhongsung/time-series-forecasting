@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras as K
-from layers import ContiFeatureEmbedding, CateFeatureEmbedding, VariableSelectionNetwork, TemporalFusionDecoder, PointWiseFeedForward, QuantileOutput
+from layers import *
 
 class TFT(K.models.Model):
     def __init__(self, d_embedding, num_rv, d_model, dr, cat_dim, future_dim, tau, num_heads):
