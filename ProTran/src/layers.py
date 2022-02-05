@@ -135,34 +135,22 @@ class GenLayer(K.layers.Layer):
         for i in range(self.timesteps):
             if prior_W == None:
                 tmp_w_bar = self.layer_norm1(w[:, i:i+1, :] + self.mha1(w[:, i:i+1, :], w[:, :i+1, :], w[:, :i+1, :]))
-                tmp_w_hat = self.layer_norm2(tmp_w_bar + self.mha2(tmp_w_bar, h_C, h_C)) 
-                tmp_mean = self.dense1(tmp_w_hat)
-                tmp_eps = tf.random.normal(shape=tmp_mean.shape, mean=tf.zeros(shape=tmp_mean.shape), stddev=tf.math.softplus(self.dense2(tmp_w_hat)))
-                tmp_z = tmp_mean + tmp_eps    
-                tmp_w = self.add_posit(tmp_w_hat + self.dense3(tmp_z), i)
-               
-                w = tf.concat([w, tmp_w], axis=1) 
-                
-                w_hat_list.append(tmp_w_hat) 
-                z_list.append(tmp_z) 
-                mean_list.append(tmp_mean)
-                var_list.append(tf.math.softplus(self.dense2(tmp_w_hat)))
-                
             else:
                 tmp_w_tilde = self.layer_norm3(w[:, i:i+1, :] + self.mha3(w[:, i:i+1, :], prior_W, prior_W))
                 tmp_w_bar = self.layer_norm1(tmp_w_tilde + self.mha1(tmp_w_tilde, w[:, :i+1, :], w[:, :i+1, :]))
-                tmp_w_hat = self.layer_norm2(tmp_w_bar + self.mha2(tmp_w_bar, h_C, h_C)) 
-                tmp_mean = self.dense1(tmp_w_hat)
-                tmp_eps = tf.random.normal(shape=tmp_mean.shape, mean=tf.zeros(shape=tmp_mean.shape), stddev=tf.math.softplus(self.dense2(tmp_w_hat)))
-                tmp_z = tmp_mean + tmp_eps    
-                tmp_w = self.add_posit(tmp_w_hat + self.dense3(tmp_z), i)
 
-                w = tf.concat([w, tmp_w], axis=1)
+            tmp_w_hat = self.layer_norm2(tmp_w_bar + self.mha2(tmp_w_bar, h_C, h_C)) 
+            tmp_mean = self.dense1(tmp_w_hat)
+            tmp_eps = tf.random.normal(shape=tmp_mean.shape, mean=tf.zeros(shape=tmp_mean.shape), stddev=tf.math.softplus(self.dense2(tmp_w_hat)))
+            tmp_z = tmp_mean + tmp_eps    
+            tmp_w = self.add_posit(tmp_w_hat + self.dense3(tmp_z), i)
 
-                w_hat_list.append(tmp_w_hat) 
-                z_list.append(tmp_z) 
-                mean_list.append(tmp_mean)
-                var_list.append(tf.math.softplus(self.dense2(tmp_w_hat)))
+            w = tf.concat([w, tmp_w], axis=1)
+
+            w_hat_list.append(tmp_w_hat) 
+            z_list.append(tmp_z) 
+            mean_list.append(tmp_mean)
+            var_list.append(tf.math.softplus(self.dense2(tmp_w_hat)))
                            
         z = tf.concat(z_list, axis=1) # (batch_size, timesteps, d_latent)
         w_hat = tf.concat(w_hat_list, axis=1) # (batch_size, timesteps, d_model)
