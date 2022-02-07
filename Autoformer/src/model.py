@@ -10,9 +10,9 @@ class Autoformer(K.models.Model):
         self.future_steps = future_steps
 
         self.series_decomp = SeriesDecomp(kernel_size)
-        self.encoder = [self.EncoderLayer(kernel_size, d_model, num_heads, dropout_rate) for _ in range(N)]
-        self.decoder = [self.DecoderLayer(kernel_size, d_model, num_heads, dropout_rate) for _ in range(M)]
-        
+        self.encoder = [EncoderLayer(kernel_size, d_model, num_heads, dropout_rate) for _ in range(N)]
+        self.decoder = [DecoderLayer(kernel_size, d_model, num_heads, dropout_rate) for _ in range(M)]
+        self.dense = K.layers.Dense(d_model)
         self.final_dense = K.layers.Dense(1)
 
     @tf.function
@@ -20,8 +20,9 @@ class Autoformer(K.models.Model):
         timesteps = x.shape[1]
         x_ens, x_ent = self.series_decomp(x[:, timesteps//2:, :])
         x_des = tf.concat([x_ens, tf.zeros([x_ens.shape[0], self.future_steps, x_ens.shape[-1]])], axis=1)
-        x_det = tf.concat([x_ent, tf.repeat(tf.reduce_mean(x, axis=1)[:, tf.newaxis, :], repeats=timesteps, axis=1)])
-
+        x_det = tf.concat([x_ent, tf.repeat(tf.reduce_mean(x, axis=1)[:, tf.newaxis, :], repeats=timesteps, axis=1)], axis=1)
+        x_det = self.dense(x_det)
+        
         for i in range(self.N):
             x = self.encoder[i](x)
 
