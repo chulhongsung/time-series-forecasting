@@ -18,7 +18,8 @@ class ProTran(K.models.Model):
         self.inf_encoder = [InfLayer(d_model, d_latent, num_heads) for _ in range(num_layers)]
         
         self.final_dense = K.layers.Dense(d_output)
-        
+    
+    @tf.function
     def call(self, x):
         h = self.add_posit(self.dense(x))
         
