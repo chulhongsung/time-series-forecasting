@@ -52,7 +52,8 @@ class Seq2seq(K.models.Model):
         super(Seq2seq, self).__init__()
         self.encoder = Encoder(d_model, dropout)
         self.decoder = Decoder(d_model, k, dropout)
-        
+    
+    @tf.function
     def call(self, input, train=False, teacher=None):
         input_arr, initial = input
         encoder_hidden, encoder_cell = self.encoder(input_arr)
