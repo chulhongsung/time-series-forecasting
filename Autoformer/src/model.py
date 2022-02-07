@@ -12,8 +12,9 @@ class Autoformer(K.models.Model):
         self.series_decomp = SeriesDecomp(kernel_size)
         self.encoder = [EncoderLayer(kernel_size, d_model, num_heads, dropout_rate) for _ in range(N)]
         self.decoder = [DecoderLayer(kernel_size, d_model, num_heads, dropout_rate) for _ in range(M)]
-        self.dense = K.layers.Dense(d_model)
-        self.final_dense = K.layers.Dense(1)
+        self.dense1 = K.layers.Dense(d_model)
+        self.dense2 = K.layers.Dense(1)
+        self.final_dense = K.layers.Dense(future_steps)
 
     @tf.function
     def call(self, x):
@@ -22,7 +23,7 @@ class Autoformer(K.models.Model):
         x_des = tf.concat([x_ens, tf.zeros([x_ens.shape[0], self.future_steps, x_ens.shape[-1]])], axis=1)
         x_det = tf.concat([x_ent, tf.repeat(tf.reduce_mean(x, axis=1)[:, tf.newaxis, :], repeats=timesteps, axis=1)], axis=1)
         x_det = self.dense(x_det)
-        
+
         for i in range(self.N):
             x = self.encoder[i](x)
 
@@ -31,6 +32,6 @@ class Autoformer(K.models.Model):
         for j in range(self.M):
             x_des, x_det = self.decoder[j](x_des, encoder_output, x_det)
             
-        output = self.final_dense(tf.concat([x_des, x_det], axis=-1))
+        output = self.final_dense(tf.squeeze(self.final_dense(tf.concat([x_des, x_det], axis=-1))))
 
         return output
