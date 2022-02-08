@@ -10,4 +10,4 @@ Tutorial repository for time series forecasting models by Tensorflow2
 
 - Autoformer: Decomposition Transformer with Auto-Correlation for Long-Term Series Forecasting([paper](https://arxiv.org/pdf/2106.13008.pdf), [official code](https://github.com/thuml/Autoformer), NeurIPS 2021)
 
-- TimeGrad: Autoregressive Denoising Diffusion Models for Multivariate Probabilistic Time Series Forecasting([paper](https://arxiv.org/pdf/2101.12072.pdf), [official code](https://github.com/zalandoresearch/pytorch-ts), ICML 2021)
+- TimeGrad: Autoregressive Denoising Diffusion Models for Multivariate Probabilistic Time Series Forecasting([paper](https://arxiv.org/pdf/2101.12072.pdf), [official code](https://github.com/zalandoresearch/pytorch-ts/tree/master/pts/model/time_grad), ICML 2021)
