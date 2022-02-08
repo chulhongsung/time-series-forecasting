@@ -17,7 +17,8 @@ class TFT(K.models.Model):
         self.tfd = TemporalFusionDecoder(d_model, dr, num_heads)
         self.pwff = PointWiseFeedForward(d_model, dr)
         self.qo = QuantileOutput(tau, quantile=[0.1, 0.5, 0.9])
-        
+    
+    @tf.function
     def call(self, rv_inputs, cate_inputs, future_inputs):
         
         conti_embedding = self.confe(rv_inputs)
