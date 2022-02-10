@@ -128,7 +128,7 @@ class DecoderLayer(K.layers.Layer):
         
         self.dense1 = K.layers.Dense(d_model)
         self.dense2 = K.layers.Dense(d_model)
-        self.projector = K.layers.Dense(1, use_bias=False)
+        self.projector = K.layers.Dense(d_model, use_bias=False)
         self.dropout = K.layers.Dropout(dropout_rate)
 
     def call(self, x, x_en, init_trend):
