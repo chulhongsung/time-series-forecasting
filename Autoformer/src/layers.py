@@ -103,16 +103,14 @@ class EncoderLayer(K.layers.Layer):
         self.series_decomp1 = SeriesDecomp(kernel_size)
         self.series_decomp2 = SeriesDecomp(kernel_size)
         self.autocorrelation = AutoCorrelation(d_model, num_heads)
-        
-        self.dense1 = K.layers.Dense(d_model)
-        self.dense2 = K.layers.Dense(d_model)
-
         self.dropout = K.layers.Dropout(dropout_rate)
         
+    def build(self, input_shape):
+        self.dense = K.layers.Dense(input_shape[-1])
+        
     def call(self, x):
-        x = self.dropout(self.dense1(x))
         x, _ = self.series_decomp1(self.autocorrelation(x, x, x) + x)
-        x, _ = self.series_decomp2(self.dropout(self.dense2(x)) + x)
+        x, _ = self.series_decomp2(self.dropout(self.dense(x)) + x)
 
         return x
     
@@ -125,19 +123,23 @@ class DecoderLayer(K.layers.Layer):
         
         self.autocorrelation1 = AutoCorrelation(d_model, num_heads)
         self.autocorrelation2 = AutoCorrelation(d_model, num_heads)
+
+        self.conv1 = K.layers.Conv1D(d_model, kernel_size=3, strides=1, padding='same')
         
-        self.dense1 = K.layers.Dense(d_model)
-        self.dense2 = K.layers.Dense(d_model)
-        self.projector = K.layers.Dense(d_model, use_bias=False)
+        self.projector = K.layers.Conv1D(1, kernel_size=3, strides=1, padding='same')
         self.dropout = K.layers.Dropout(dropout_rate)
 
+    def build(self, input_shape):
+        self.dense1 = K.layers.Dense(input_shape[-1])
+        self.conv2 = K.layers.Conv1D(input_shape[-1], kernel_size=3, strides=1, padding='same')
+
     def call(self, x, x_en, init_trend):
-        x = self.dropout(self.dense1(x))
         x, trend1 = self.series_decomp1(self.autocorrelation1(x, x, x) + x)
         x, trend2 = self.series_decomp2(self.autocorrelation2(x, x_en, x_en) + x)
-        x, trend3 = self.series_decomp3(self.dropout(self.dense2(x)) + x)
+        x = self.conv2(self.dropout(tf.keras.activations.gelu(self.conv1(x))))
+        x, trend3 = self.series_decomp3(self.dropout(self.dense1(x)) + x)
         
-        trend = tf.concat([trend1,trend2,trend3], axis=-1)
+        trend = trend1 + trend2 + trend3 
         trend = self.dropout(self.projector(trend))
 
-        return x, init_trend+trend
+        return x, init_trend + trend

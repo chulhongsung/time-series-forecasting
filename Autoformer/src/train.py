@@ -11,7 +11,8 @@ mse = K.losses.MeanSquaredError()
 @tf.function
 def train_step(model, input, target):
     with tf.GradientTape(persistent=True) as tape:
-        predicted = model(input)
+        trend, seansonal = model(input)
+        predicted  = trend + seansonal
         loss = mse(tf.squeeze(target), predicted)
     grad = tape.gradient(loss, model.weights)
     optimizer.apply_gradients(zip(grad, model.weights))
