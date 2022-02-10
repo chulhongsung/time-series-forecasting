@@ -124,14 +124,14 @@ class DecoderLayer(K.layers.Layer):
         self.autocorrelation1 = AutoCorrelation(d_model, num_heads)
         self.autocorrelation2 = AutoCorrelation(d_model, num_heads)
 
-        self.conv1 = K.layers.Conv1D(d_model, kernel_size=3, strides=1, padding='same')
+        self.conv1 = K.layers.Conv1D(d_model, kernel_size=3, strides=1, padding='same', use_bias=False)
         
-        self.projector = K.layers.Conv1D(1, kernel_size=3, strides=1, padding='same')
+        self.projector = K.layers.Conv1D(1, kernel_size=3, strides=1, padding='same', use_bias=False)
         self.dropout = K.layers.Dropout(dropout_rate)
 
     def build(self, input_shape):
         self.dense1 = K.layers.Dense(input_shape[-1])
-        self.conv2 = K.layers.Conv1D(input_shape[-1], kernel_size=3, strides=1, padding='same')
+        self.conv2 = K.layers.Conv1D(input_shape[-1], kernel_size=3, strides=1, padding='same', use_bias=False)
 
     def call(self, x, x_en, init_trend):
         x, trend1 = self.series_decomp1(self.autocorrelation1(x, x, x) + x)
