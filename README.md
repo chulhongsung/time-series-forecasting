@@ -1,6 +1,6 @@
 # time-series-forecasting
 
-Tensorflow2 tutorial repository for time series forecasting models by chulhongsung
+Tensorflow2 tutorial repository for deep time series forecasting models by chulhongsung
 
 - seq2seq: Sequence to Sequence Learning with Neural Networks([paper](https://arxiv.org/abs/1409.3215)) `NeurIPS 2014`
 
