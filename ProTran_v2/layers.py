@@ -161,11 +161,11 @@ class GenLayer(K.layers.Layer):
                 for _ in range(5):
                     tmp_eps += tf.random.normal(shape=tmp_eps.shape,
                                                 mean=tf.zeros(shape=tmp_mean.shape),
-                                                stddev=tf.math.softplus(self.dense2(tmp_w_hat)))/5
+                                                stddev=tf.math.sigmoid(self.dense2(tmp_w_hat)))/5
             else:
                    tmp_eps = tf.random.normal(shape=tmp_mean.shape,
                                               mean=tf.zeros(shape=tmp_mean.shape),
-                                              stddev=tf.math.softplus(self.dense2(tmp_w_hat)))
+                                              stddev=tf.math.sigmoid(self.dense2(tmp_w_hat)))
             tmp_z = tmp_mean + tmp_eps    
             tmp_w = self.add_posit(tmp_w_trend + self.dense3(tmp_z), i)
 
@@ -174,7 +174,7 @@ class GenLayer(K.layers.Layer):
             w_hat_list.append(tmp_w_hat) 
             z_list.append(tmp_z) 
             mean_list.append(tmp_mean)
-            var_list.append(tf.math.softplus(self.dense2(tmp_w_hat)))
+            var_list.append(tf.math.sigmoid(self.dense2(tmp_w_hat)))
                            
         z = tf.concat(z_list, axis=1) # (batch_size, timesteps, d_latent)
         w_hat = tf.concat(w_hat_list, axis=1) # (batch_size, timesteps, d_model)
@@ -203,7 +203,7 @@ class InfLayer(K.layers.Layer):
 
         tmp_eps = tf.random.normal(shape=tmp_mean.shape,
                                    mean=tf.zeros(shape=tmp_mean.shape),
-                                   stddev=tf.math.softplus(self.dense2(hk)))
+                                   stddev=tf.math.sigmoid(self.dense2(hk)))
         
         z = tmp_mean + tmp_eps
             
