@@ -159,9 +159,13 @@ class GenLayer(K.layers.Layer):
             if MC:
                 tmp_eps = tf.zeros_like(tmp_mean, dtype=tf.float32)
                 for _ in range(5):
-                    tmp_eps += tf.random.normal(shape=tmp_eps.shape, mean=tf.zeros(shape=tmp_mean.shape), stddev=tf.math.softplus(self.dense2(tmp_w_hat)))/5
+                    tmp_eps += tf.random.normal(shape=tmp_eps.shape,
+                                                mean=tf.zeros(shape=tmp_mean.shape),
+                                                stddev=tf.math.softplus(self.dense2(tmp_w_hat)))/5
             else:
-                   tmp_eps = tf.random.normal(shape=tmp_mean.shape, mean=tf.zeros(shape=tmp_mean.shape), stddev=tf.math.softplus(self.dense2(tmp_w_hat)))
+                   tmp_eps = tf.random.normal(shape=tmp_mean.shape,
+                                              mean=tf.zeros(shape=tmp_mean.shape),
+                                              stddev=tf.math.softplus(self.dense2(tmp_w_hat)))
             tmp_z = tmp_mean + tmp_eps    
             tmp_w = self.add_posit(tmp_w_trend + self.dense3(tmp_z), i)
 
@@ -197,7 +201,9 @@ class InfLayer(K.layers.Layer):
         
         tmp_eps = tf.zeros_like(tmp_mean, dtype=tf.float32)
 
-        tmp_eps = tf.random.normal(shape=tmp_mean.shape, mean=tf.zeros(shape=tmp_mean.shape), stddev=tf.math.softplus(self.dense2(hk)))
+        tmp_eps = tf.random.normal(shape=tmp_mean.shape,
+                                   mean=tf.zeros(shape=tmp_mean.shape),
+                                   stddev=tf.math.softplus(self.dense2(hk)))
         
         z = tmp_mean + tmp_eps
             
