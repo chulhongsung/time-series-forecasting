@@ -48,9 +48,15 @@ class ProTran(K.models.Model):
                     
         for i in range(self.num_layers):
             if i == 0 :
-                tmp_gen_w, tmp_gen_z, tmp_gen_w_hat, tmp_gen_w_trend, tmp_gen_mean, tmp_gen_var = self.gen_decoder[i](h[:, :self.current_time, :], h_prime, prior_W=None, MC=True)
+                tmp_gen_w, tmp_gen_z, tmp_gen_w_hat, tmp_gen_w_trend, tmp_gen_mean, tmp_gen_var = self.gen_decoder[i](h[:, :self.current_time, :],
+                                                                                                                      h_prime,
+                                                                                                                      prior_W=None,
+                                                                                                                      MC=True)
             else:
-                tmp_gen_w, tmp_gen_z, tmp_gen_w_hat, tmp_gen_w_trend, tmp_gen_mean, tmp_gen_var = self.gen_decoder[i](h[:, :self.current_time, :], h_prime, tmp_gen_w, MC=True)
+                tmp_gen_w, tmp_gen_z, tmp_gen_w_hat, tmp_gen_w_trend, tmp_gen_mean, tmp_gen_var = self.gen_decoder[i](h[:, :self.current_time, :],
+                                                                                                                      h_prime, 
+                                                                                                                      tmp_gen_w, 
+                                                                                                                      MC=True)
             
             gen_w_list.append(tf.expand_dims(tmp_gen_w, axis=1)) # (batch_size, 1, timesteps, d_model)
             
@@ -84,9 +90,15 @@ class ProTran(K.models.Model):
                     
         for i in range(self.num_layers):
             if i == 0 :
-                tmp_gen_w, tmp_gen_z, tmp_gen_w_hat, tmp_gen_w_trend, tmp_gen_mean, tmp_gen_var = self.gen_decoder[i](h[:, :self.current_time, :], h_prime, prior_W=None, MC=MonteCarlo)
+                tmp_gen_w, tmp_gen_z, tmp_gen_w_hat, tmp_gen_w_trend, tmp_gen_mean, tmp_gen_var = self.gen_decoder[i](h[:, :self.current_time, :],
+                                                                                                                      h_prime,
+                                                                                                                      prior_W=None,
+                                                                                                                      MC=MonteCarlo)
             else:
-                tmp_gen_w, tmp_gen_z, tmp_gen_w_hat, tmp_gen_w_trend, tmp_gen_mean, tmp_gen_var = self.gen_decoder[i](h[:, :self.current_time, :], h_prime, tmp_gen_w, MC=MonteCarlo)
+                tmp_gen_w, tmp_gen_z, tmp_gen_w_hat, tmp_gen_w_trend, tmp_gen_mean, tmp_gen_var = self.gen_decoder[i](h[:, :self.current_time, :],
+                                                                                                                      h_prime,
+                                                                                                                      tmp_gen_w,
+                                                                                                                      MC=MonteCarlo)
             
             gen_w_list.append(tf.expand_dims(tmp_gen_w, axis=1)) # (batch_size, 1, timesteps, d_model)
             gen_z_list.append(tf.expand_dims(tmp_gen_z, axis=1)) # (batch_size, 1, timesteps, d_latent)
@@ -109,7 +121,10 @@ class ProTran(K.models.Model):
         inf_var_list = []
         
         for i in range(self.num_layers):
-            tmp_inf_z, tmp_inf_mean, tmp_inf_var = self.inf_encoder[i](h, h_prime, gen_w_hat[:, i, :], gen_w_trend[:, i, :])
+            tmp_inf_z, tmp_inf_mean, tmp_inf_var = self.inf_encoder[i](h,
+                                                                       h_prime,
+                                                                       gen_w_hat[:, i, :],
+                                                                       gen_w_trend[:, i, :])
             inf_z_list.append(tf.expand_dims(tmp_inf_z, axis=1)) # (batch_size, 1, timesteps, d_latent)
             inf_mean_list.append(tf.expand_dims(tmp_inf_mean, axis=1)) # (batch_size, 1, timesteps, d_latent)
             inf_var_list.append(tf.expand_dims(tmp_inf_var, axis=1)) # (batch_size, 1, timesteps, d_latent)
