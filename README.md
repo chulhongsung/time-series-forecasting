@@ -20,5 +20,4 @@ Tensorflow2 tutorial repository for time series forecasting models by chulhongsu
 
 - TimeGrad: Autoregressive Denoising Diffusion Models for Multivariate Probabilistic Time Series Forecasting ([paper](https://arxiv.org/pdf/2101.12072.pdf), [official code](https://github.com/zalandoresearch/pytorch-ts/tree/master/pts/model/time_grad)) `ICML 2021`
 
-
-
+- PessTFT: Pessimistic TFT model to forecast extreme events
