@@ -390,6 +390,6 @@ hyperparam_dict = {"d_emb":args.d_emb,
                    "lr":args.lr,
                    "epochs":args.epochs}
 
-with open("/home1/prof/jeon/hong/ts/param/"+ datetime.date.today().strftime("%Y%m%d") + '_hyperparams.txt', "w") as f:
+with open("./param/"+ datetime.date.today().strftime("%Y%m%d") + '_hyperparams.txt', "w") as f:
     print(hyperparam_dict, file=f)
     
