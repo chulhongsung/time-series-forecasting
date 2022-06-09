@@ -417,5 +417,5 @@ hyperparam_dict = {"d_emb":args.d_emb,
                    "lambda_1": args.lambda_1,
                    "lambda_2": args.lambda_2}
 
-with open("/home1/prof/jeon/hong/ts/param/"+ args.job_name + '_hyperparams.txt', "w") as f:
+with open("./param/"+ args.job_name + '_hyperparams.txt', "w") as f:
     print(hyperparam_dict, file=f)
