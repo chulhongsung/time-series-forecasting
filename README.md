@@ -1,6 +1,6 @@
 # time-series-forecasting
 
-Tensorflow tutorial repository for time series forecasting models
+## Tensorflow tutorial repository for time series forecasting models
 
 - seq2seq: Sequence to Sequence Learning with Neural Networks ([paper](https://arxiv.org/abs/1409.3215)) `NeurIPS 2014`
 
@@ -22,6 +22,13 @@ Tensorflow tutorial repository for time series forecasting models
 
 - PessTFT: Pessimistic TFT model to forecast extreme events
 
+- Learning to Remember Patterns: Pattern Matching Memory Networks for Traffic Forecasting ([paper](https://arxiv.org/pdf/2110.10380.pdf), [official code](https://github.com/HyunWookL/PM-MemNet)) `ICLR 2022`
+
 - Calibrated and Sharp Uncertainties in Deep Learning via Density Estimation ([paper](https://arxiv.org/pdf/2112.07184.pdf)) `ICML 2022`
 
-- Learning to Remember Patterns: Pattern Matching Memory Networks for Traffic Forecasting ([paper](https://arxiv.org/pdf/2110.10380.pdf)) `ICLR 2022`
+### Graph based time-serise forecasting
+
+Pre-training Enhanced Spatial-temporal Graph Neural Network for Multivariate Time Series Forecasting ([paper](https://arxiv.org/pdf/2206.09113.pdf), [official code](https://github.com/zezhishao/STEP)) `KDD 2022`
+
+Adaptive Graph Spatial-Temporal Transformer Network for Traffic Forecasting ([paper](https://dl.acm.org/doi/pdf/10.1145/3511808.3557540)) `CIKM 2022`
+
