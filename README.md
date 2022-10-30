@@ -2,6 +2,8 @@
 
 ## Tensorflow tutorial repository for time series forecasting models
 
+### Autoregressive and attention based time series forecasting
+
 - seq2seq: Sequence to Sequence Learning with Neural Networks ([paper](https://arxiv.org/abs/1409.3215)) `NeurIPS 2014`
 
 - TFT: Temporal Fusion Transformer for Interpretable Multi-horizon Time Series Forecasting ([paper](https://arxiv.org/pdf/1912.09363.pdf), [official code](https://github.com/google-research/google-research/tree/master/tft))  `IJF 2019`
