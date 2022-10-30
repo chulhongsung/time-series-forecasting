@@ -2,7 +2,7 @@
 
 ## Tensorflow tutorial repository for time series forecasting models
 
-### Autoregressive and attention based time series forecasting
+### 1. Autoregressive and attention based time series forecasting
 
 - seq2seq: Sequence to Sequence Learning with Neural Networks ([paper](https://arxiv.org/abs/1409.3215)) `NeurIPS 2014`
 
@@ -28,7 +28,7 @@
 
 - Calibrated and Sharp Uncertainties in Deep Learning via Density Estimation ([paper](https://arxiv.org/pdf/2112.07184.pdf)) `ICML 2022`
 
-### Graph based time-serise forecasting
+### 2. Graph based time-serise forecasting
 
 - Pre-training Enhanced Spatial-temporal Graph Neural Network for Multivariate Time Series Forecasting ([paper](https://arxiv.org/pdf/2206.09113.pdf), [official code](https://github.com/zezhishao/STEP)) `KDD 2022`
 
