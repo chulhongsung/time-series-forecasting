@@ -30,7 +30,7 @@
 
 ### Graph based time-serise forecasting
 
-Pre-training Enhanced Spatial-temporal Graph Neural Network for Multivariate Time Series Forecasting ([paper](https://arxiv.org/pdf/2206.09113.pdf), [official code](https://github.com/zezhishao/STEP)) `KDD 2022`
+- Pre-training Enhanced Spatial-temporal Graph Neural Network for Multivariate Time Series Forecasting ([paper](https://arxiv.org/pdf/2206.09113.pdf), [official code](https://github.com/zezhishao/STEP)) `KDD 2022`
 
-Adaptive Graph Spatial-Temporal Transformer Network for Traffic Forecasting ([paper](https://dl.acm.org/doi/pdf/10.1145/3511808.3557540)) `CIKM 2022`
+- Adaptive Graph Spatial-Temporal Transformer Network for Traffic Forecasting ([paper](https://dl.acm.org/doi/pdf/10.1145/3511808.3557540)) `CIKM 2022`
 
