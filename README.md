@@ -23,3 +23,5 @@ Tensorflow tutorial repository for time series forecasting models
 - PessTFT: Pessimistic TFT model to forecast extreme events
 
 - Calibrated and Sharp Uncertainties in Deep Learning via Density Estimation ([paper](https://arxiv.org/pdf/2112.07184.pdf)) `ICML 2022`
+
+- Learning to Remember Patterns: Pattern Matching Memory Networks for Traffic Forecasting ([paper](https://arxiv.org/pdf/2110.10380.pdf)) `ICLR 2022`
