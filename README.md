@@ -1,6 +1,6 @@
 # time-series-forecasting
 
-## Tensorflow tutorial repository for time series forecasting models
+### Tutorial repository for time series forecasting models
 
 ### 1. Autoregressive and attention based time series forecasting
 
