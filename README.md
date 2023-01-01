@@ -22,11 +22,14 @@
 
 - TimeGrad: Autoregressive Denoising Diffusion Models for Multivariate Probabilistic Time Series Forecasting ([paper](https://arxiv.org/pdf/2101.12072.pdf), [official code](https://github.com/zalandoresearch/pytorch-ts/tree/master/pts/model/time_grad)) `ICML 2021`
 
+- N-BEATS: Neural Bais Expansion Analysis for Interpretable Time Series Forecasting ([paper](https://arxiv.org/pdf/1905.10437.pdf), [official code](https://github.com/ServiceNow/N-BEATS)) `ICLR 2021`
+
 - PessTFT: Pessimistic TFT model to forecast extreme events
 
 - Learning to Remember Patterns: Pattern Matching Memory Networks for Traffic Forecasting ([paper](https://arxiv.org/pdf/2110.10380.pdf), [official code](https://github.com/HyunWookL/PM-MemNet)) `ICLR 2022`
 
 - Calibrated and Sharp Uncertainties in Deep Learning via Density Estimation ([paper](https://arxiv.org/pdf/2112.07184.pdf)) `ICML 2022`
+
 
 ### 2. GNN based spatial time-serise forecasting
 
