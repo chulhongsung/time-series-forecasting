@@ -37,4 +37,4 @@
 
 - [Adaptive Graph Spatial-Temporal Transformer Network for Traffic Forecasting ](https://dl.acm.org/doi/pdf/10.1145/3511808.3557540) `CIKM 2022`
 
-- [Learning to Remember Patterns: Pattern Matching Memory Networks for Traffic Forecasting ](https://arxiv.org/pdf/2110.10380.pdf), [official code](https://github.com/HyunWookL/PM-MemNet) `ICLR 2022`
+- [Learning to Remember Patterns: Pattern Matching Memory Networks for Traffic Forecasting ](https://arxiv.org/pdf/2110.10380.pdf)([official code](https://github.com/HyunWookL/PM-MemNet)) `ICLR 2022`
