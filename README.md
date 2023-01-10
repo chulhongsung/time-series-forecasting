@@ -4,13 +4,15 @@
 
 ### 1. Autoregressive and attention based time series forecasting
 
-- seq2seq: [Sequence to Sequence Learning with Neural Network](https://arxiv.org/abs/1409.3215) `NeurIPS 2014`
+- [Sequence to Sequence Learning with Neural Network](https://arxiv.org/abs/1409.3215) `NeurIPS 2014` `seq2seq`
 
-- TFT: [Temporal Fusion Transformer for Interpretable Multi-horizon Time Series Forecasting](https://arxiv.org/pdf/1912.09363.pdf) ([official code](https://github.com/google-research/google-research/tree/master/tft))  `IJF 2019`
+- [Temporal Fusion Transformer for Interpretable Multi-horizon Time Series Forecasting](https://arxiv.org/pdf/1912.09363.pdf) ([official code](https://github.com/google-research/google-research/tree/master/tft))  `IJF 2019` `TFT`
 
-- ProTran: [Probabilistic Transformer for Time Series Analysis ](https://proceedings.neurips.cc/paper/2021/file/c68bd9055776bf38d8fc43c0ed283678-Paper.pdf) `NeurIPS 2021`
+- [DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks](https://arxiv.org/pdf/1704.04110.pdf)
 
-- ProTran_v2: ProTran model which contains known future inputs by chulhongsung
+- [Probabilistic Transformer for Time Series Analysis ](https://proceedings.neurips.cc/paper/2021/file/c68bd9055776bf38d8fc43c0ed283678-Paper.pdf) `NeurIPS 2021` `ProTran`
+
+- ProTran model which contains known future inputs by chulhongsung, `ProTran_v2`
 
 - Autoformer: [Decomposition Transformer with Auto-Correlation for Long-Term Series Forecasting](https://arxiv.org/pdf/2106.13008.pdf) ([official code](https://github.com/thuml/Autoformer)) `NeurIPS 2021`
 
