@@ -14,13 +14,13 @@
 
 - ProTran model which contains known future inputs by chulhongsung, `ProTran_v2`
 
-- Autoformer: [Decomposition Transformer with Auto-Correlation for Long-Term Series Forecasting](https://arxiv.org/pdf/2106.13008.pdf) ([official code](https://github.com/thuml/Autoformer)) `NeurIPS 2021`
+- [Autoformer: Decomposition Transformer with Auto-Correlation for Long-Term Series Forecasting](https://arxiv.org/pdf/2106.13008.pdf) ([official code](https://github.com/thuml/Autoformer)) `NeurIPS 2021` `Autoformer`
 
-- NKF: [Normalizing Kalman Filters for Multivariate Time Series Analysis](https://proceedings.neurips.cc/paper/2020/file/1f47cef5e38c952f94c5d61726027439-Supplemental.pdf) `NeurIPS 2020`
+- [Normalizing Kalman Filters for Multivariate Time Series Analysis](https://proceedings.neurips.cc/paper/2020/file/1f47cef5e38c952f94c5d61726027439-Supplemental.pdf) `NeurIPS 2020`
 
 - Transformer-MAF: [Multivariate Probabilistic Time Series Forecasting Via Conditioned Normalizing Flows](https://arxiv.org/pdf/2002.06103.pdf) `ICLR 2021`
 
-- TLAE: [Temporal Latent Auto-Encoder: A Method for Probabilistic Multivariate Time Series Forecasting](https://arxiv.org/pdf/2101.10460.pdf) `AAAI 2021`
+- [Temporal Latent Auto-Encoder: A Method for Probabilistic Multivariate Time Series Forecasting](https://arxiv.org/pdf/2101.10460.pdf) `AAAI 2021` 
 
 - TimeGrad: [Autoregressive Denoising Diffusion Models for Multivariate Probabilistic Time Series Forecasting](https://arxiv.org/pdf/2101.12072.pdf) ([official code](https://github.com/zalandoresearch/pytorch-ts/tree/master/pts/model/time_grad)) `ICML 2021`
 
