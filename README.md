@@ -12,7 +12,7 @@
 
 - ProTran_v2: ProTran model which contains known future inputs by chulhongsung
 
-- Autoformer: [Decomposition Transformer with Auto-Correlation for Long-Term Series Forecasting](https://arxiv.org/pdf/2106.13008.pdf)([official code](https://github.com/thuml/Autoformer)) `NeurIPS 2021`
+- Autoformer: [Decomposition Transformer with Auto-Correlation for Long-Term Series Forecasting](https://arxiv.org/pdf/2106.13008.pdf) ([official code](https://github.com/thuml/Autoformer)) `NeurIPS 2021`
 
 - NKF: [Normalizing Kalman Filters for Multivariate Time Series Analysis](https://proceedings.neurips.cc/paper/2020/file/1f47cef5e38c952f94c5d61726027439-Supplemental.pdf) `NeurIPS 2020`
 
@@ -20,9 +20,9 @@
 
 - TLAE: [Temporal Latent Auto-Encoder: A Method for Probabilistic Multivariate Time Series Forecasting](https://arxiv.org/pdf/2101.10460.pdf) `AAAI 2021`
 
-- TimeGrad: [Autoregressive Denoising Diffusion Models for Multivariate Probabilistic Time Series Forecasting](https://arxiv.org/pdf/2101.12072.pdf), [official code](https://github.com/zalandoresearch/pytorch-ts/tree/master/pts/model/time_grad) `ICML 2021`
+- TimeGrad: [Autoregressive Denoising Diffusion Models for Multivariate Probabilistic Time Series Forecasting](https://arxiv.org/pdf/2101.12072.pdf) ([official code](https://github.com/zalandoresearch/pytorch-ts/tree/master/pts/model/time_grad)) `ICML 2021`
 
-- N-BEATS: [Neural Bais Expansion Analysis for Interpretable Time Series Forecasting ](https://arxiv.org/pdf/1905.10437.pdf), [official code](https://github.com/ServiceNow/N-BEATS) `ICLR 2021`
+- N-BEATS: [Neural Bais Expansion Analysis for Interpretable Time Series Forecasting ](https://arxiv.org/pdf/1905.10437.pdf) ([official code](https://github.com/ServiceNow/N-BEATS)) `ICLR 2021`
 
 - PessTFT: Pessimistic TFT model to forecast extreme events
 
@@ -33,8 +33,8 @@
 
 ### 2. GNN based spatial time-serise forecasting
 
-- [Pre-training Enhanced Spatial-temporal Graph Neural Network for Multivariate Time Series Forecasting](https://arxiv.org/pdf/2206.09113.pdf)([official code](https://github.com/zezhishao/STEP)) `KDD 2022`
+- [Pre-training Enhanced Spatial-temporal Graph Neural Network for Multivariate Time Series Forecasting](https://arxiv.org/pdf/2206.09113.pdf) ([official code](https://github.com/zezhishao/STEP)) `KDD 2022`
 
 - [Adaptive Graph Spatial-Temporal Transformer Network for Traffic Forecasting ](https://dl.acm.org/doi/pdf/10.1145/3511808.3557540) `CIKM 2022`
 
-- [Learning to Remember Patterns: Pattern Matching Memory Networks for Traffic Forecasting ](https://arxiv.org/pdf/2110.10380.pdf)([official code](https://github.com/HyunWookL/PM-MemNet)) `ICLR 2022`
+- [Learning to Remember Patterns: Pattern Matching Memory Networks for Traffic Forecasting ](https://arxiv.org/pdf/2110.10380.pdf) ([official code](https://github.com/HyunWookL/PM-MemNet)) `ICLR 2022`
