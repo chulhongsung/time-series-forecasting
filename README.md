@@ -26,9 +26,9 @@
 
 - PessTFT: Pessimistic TFT model to forecast extreme events
 
-- [Calibrated and Sharp Uncertainties in Deep Learning via Density Estimation](https://arxiv.org/pdf/2112.07184.pdf) `ICML 2022`
+- Calibration: [Calibrated and Sharp Uncertainties in Deep Learning via Density Estimation](https://arxiv.org/pdf/2112.07184.pdf) `ICML 2022`
 
-- [U-Net Inspired Transformer Architecture for Far Horizon Time Series Forecasting](https://2022.ecmlpkdd.org/wp-content/uploads/2022/09/sub_943.pdf)([official code](https://github.com/18kiran12/Yformer-Time-Series-Forecasting)) `ECMLPKDD 2022`
+- Y-Net: [U-Net Inspired Transformer Architecture for Far Horizon Time Series Forecasting](https://2022.ecmlpkdd.org/wp-content/uploads/2022/09/sub_943.pdf)([official code](https://github.com/18kiran12/Yformer-Time-Series-Forecasting)) `ECMLPKDD 2022`
 
 
 ### 2. GNN based spatial time-serise forecasting
