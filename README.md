@@ -12,7 +12,7 @@
 
 - [DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks](https://arxiv.org/pdf/1704.04110.pdf) `IJF 2020` `DeepAR`
 
-- [A Multi-Horizon Quantile Recurrent Forecaster](https://arxiv.org/pdf/1711.11053.pdf) `NeurIPS 2017` `DeepAR`
+- [A Multi-Horizon Quantile Recurrent Forecaster](https://arxiv.org/pdf/1711.11053.pdf) `NeurIPS 2017` `MQRNN`
 
 - [Probabilistic Transformer for Time Series Analysis ](https://proceedings.neurips.cc/paper/2021/file/c68bd9055776bf38d8fc43c0ed283678-Paper.pdf) `NeurIPS 2021` `ProTran`
 
