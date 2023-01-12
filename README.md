@@ -2,7 +2,7 @@
 
 ### Tutorial repository for time series forecasting models
 
-Above models are revised for multivariate time series forecasting 
+Most models are revised for multivariate time series forecasting 
 
 ### 1. Autoregressive and attention based time series forecasting
 
