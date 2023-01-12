@@ -2,6 +2,8 @@
 
 ### Tutorial repository for time series forecasting models
 
+Above models are fixed for multivariate time series forecasting 
+
 ### 1. Autoregressive and attention based time series forecasting
 
 - [Sequence to Sequence Learning with Neural Network](https://arxiv.org/abs/1409.3215) `NeurIPS 2014` `seq2seq`
