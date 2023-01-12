@@ -3,10 +3,10 @@ import torch.nn as nn
 import math
 
 class Encoder(nn.Module):
-    def __init__(self, input_dim, d_embedding, n_embedding, d_model, n_layers=3, dr=0.1):
+    def __init__(self, d_input, d_embedding, n_embedding, d_model, n_layers=3, dr=0.1):
         super(Encoder, self).__init__()
         self.embedding_layers = nn.ModuleList([nn.Embedding(n, d_embedding) for n in n_embedding]) 
-        self.lstm = nn.LSTM(input_dim + len(n_embedding) * d_embedding, d_model, n_layers, dropout=dr, batch_first=True)
+        self.lstm = nn.LSTM(d_input + len(n_embedding) * d_embedding, d_model, n_layers, dropout=dr, batch_first=True)
         
     def forward(self, conti, cate):
         tmp_feature_list = []
@@ -25,11 +25,11 @@ class Encoder(nn.Module):
         return hidden, cell
 
 class LSTMDecoder(nn.Module):
-    def __init__(self, input_dim, d_embedding, n_embedding, d_model, num_targets, n_layers=3, dr=0.1):
+    def __init__(self, d_input, d_embedding, n_embedding, d_model, num_targets, n_layers=3, dr=0.1):
         super(LSTMDecoder, self).__init__()
         self.n_layers = n_layers
         self.embedding_layers = nn.ModuleList([nn.Embedding(n, d_embedding) for n in n_embedding]) 
-        self.lstm = nn.LSTM(input_dim + len(n_embedding) * d_embedding, d_model, n_layers, dropout=dr, batch_first=True)
+        self.lstm = nn.LSTM(d_input + len(n_embedding) * d_embedding, d_model, n_layers, dropout=dr, batch_first=True)
         
         self.linear1 = nn.Linear(d_model, num_targets)
         self.linear2 = nn.Linear(d_model, num_targets)
@@ -63,10 +63,10 @@ class LSTMDecoder(nn.Module):
         return mu, sigma
 
 class DeepAR(nn.Module):
-    def __init__(self, input_dim, d_embedding, n_embedding, d_model, num_targets, n_layers=3, dr=0.1):
+    def __init__(self, d_input, d_embedding, n_embedding, d_model, num_targets, n_layers=3, dr=0.1):
         super(DeepAR, self).__init__()
 
-        self.encoder = Encoder(input_dim, d_embedding, n_embedding, d_model, n_layers, dr)
+        self.encoder = Encoder(d_input, d_embedding, n_embedding, d_model, n_layers, dr)
         self.decoder = LSTMDecoder(d_model, d_embedding, n_embedding, d_model, num_targets, n_layers, dr)
 
     def forward(self, conti, cate, future):
