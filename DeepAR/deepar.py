@@ -24,9 +24,9 @@ class Encoder(nn.Module):
 
         return hidden, cell
 
-class Decoder(nn.Module):
+class LSTMDecoder(nn.Module):
     def __init__(self, input_dim, d_embedding, n_embedding, d_model, num_targets, n_layers=3, dr=0.1):
-        super(Decoder, self).__init__()
+        super(LSTMDecoder, self).__init__()
         self.n_layers = n_layers
         self.embedding_layers = nn.ModuleList([nn.Embedding(n, d_embedding) for n in n_embedding]) 
         self.lstm = nn.LSTM(input_dim + len(n_embedding) * d_embedding, d_model, n_layers, dropout=dr, batch_first=True)
@@ -67,7 +67,7 @@ class DeepAR(nn.Module):
         super(DeepAR, self).__init__()
 
         self.encoder = Encoder(input_dim, d_embedding, n_embedding, d_model, n_layers, dr)
-        self.decoder = Decoder(d_model, d_embedding, n_embedding, d_model, num_targets, n_layers, dr)
+        self.decoder = LSTMDecoder(d_model, d_embedding, n_embedding, d_model, num_targets, n_layers, dr)
 
     def forward(self, conti, cate, future):
         
