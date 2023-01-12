@@ -6,21 +6,21 @@ Some models are revised for multivariate time series forecasting
 
 ### 1. Autoregressive and attention based time series forecasting
 
-- [Sequence to Sequence Learning with Neural Network](https://arxiv.org/abs/1409.3215) `NeurIPS 2014` `seq2seq`
+- `seq2seq` [Sequence to Sequence Learning with Neural Network](https://arxiv.org/abs/1409.3215) `NeurIPS 2014` 
 
-- [Temporal Fusion Transformer for Interpretable Multi-horizon Time Series Forecasting](https://arxiv.org/pdf/1912.09363.pdf) ([official code](https://github.com/google-research/google-research/tree/master/tft))  `IJF 2019` `TFT`
+-  `TFT` [Temporal Fusion Transformer for Interpretable Multi-horizon Time Series Forecasting](https://arxiv.org/pdf/1912.09363.pdf) ([official code](https://github.com/google-research/google-research/tree/master/tft))  `IJF 2019`
 
 - Pessimistic TFT model to forecast extreme events by chulhongsung `PessTFT`
 
-- [DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks](https://arxiv.org/pdf/1704.04110.pdf) `IJF 2020` `DeepAR`
+- `DeepAR` [DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks](https://arxiv.org/pdf/1704.04110.pdf) `IJF 2020` 
 
-- [A Multi-Horizon Quantile Recurrent Forecaster](https://arxiv.org/pdf/1711.11053.pdf) `NeurIPS 2017` `MQRNN`
+- `MQRNN` [A Multi-Horizon Quantile Recurrent Forecaster](https://arxiv.org/pdf/1711.11053.pdf) `NeurIPS 2017`
 
-- [Probabilistic Transformer for Time Series Analysis ](https://proceedings.neurips.cc/paper/2021/file/c68bd9055776bf38d8fc43c0ed283678-Paper.pdf) `NeurIPS 2021` `ProTran`
+- `ProTran` [Probabilistic Transformer for Time Series Analysis ](https://proceedings.neurips.cc/paper/2021/file/c68bd9055776bf38d8fc43c0ed283678-Paper.pdf) `NeurIPS 2021` 
 
-- ProTran model which contains known future inputs by chulhongsung `ProTran_v2`
+- `ProTran_v2` ProTran model which contains known future inputs by chulhongsung 
 
-- [Autoformer: Decomposition Transformer with Auto-Correlation for Long-Term Series Forecasting](https://arxiv.org/pdf/2106.13008.pdf) ([official code](https://github.com/thuml/Autoformer)) `NeurIPS 2021` `Autoformer`
+- `Autoformer` [Autoformer: Decomposition Transformer with Auto-Correlation for Long-Term Series Forecasting](https://arxiv.org/pdf/2106.13008.pdf) ([official code](https://github.com/thuml/Autoformer)) `NeurIPS 2021` 
 
 - [Normalizing Kalman Filters for Multivariate Time Series Analysis](https://proceedings.neurips.cc/paper/2020/file/1f47cef5e38c952f94c5d61726027439-Supplemental.pdf) `NeurIPS 2020`
 
