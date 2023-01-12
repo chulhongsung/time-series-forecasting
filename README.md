@@ -46,5 +46,6 @@ Some models are revised for multivariate time series forecasting
 
 ### Calibration
 
+- `ICML 2018` [Accurate Uncertainties for Deep Learning Using Calibrated Regression](https://arxiv.org/pdf/1807.00263.pdf)
 - `ICML 2022` [Calibrated and Sharp Uncertainties in Deep Learning via Density Estimation](https://arxiv.org/pdf/2112.07184.pdf) 
 
