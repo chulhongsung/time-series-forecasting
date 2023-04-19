@@ -1,6 +1,6 @@
 # time-series-forecasting
 
-### Tutorial repository for time series forecasting models
+### Tutorial repository for time series forecasting models(simplified version)
 
 Some models are revised for multivariate time series forecasting 
 
