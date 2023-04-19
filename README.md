@@ -26,6 +26,8 @@ Some models are revised for multivariate time series forecasting
 
 ### Generative model based
 
+- `GP-Copula` `NeurIPS 2019` [High-Dimensional Multivariate Forecasting with Low-Rank Gaussian Copula Processes](https://arxiv.org/pdf/1910.03002.pdf)
+
 - `ProTran` `NeurIPS 2021`  [Probabilistic Transformer for Time Series Analysis ](https://proceedings.neurips.cc/paper/2021/file/c68bd9055776bf38d8fc43c0ed283678-Paper.pdf) 
 
 - `ProTran_v2` ProTran model which contains known future inputs by chulhongsung 
