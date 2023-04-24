@@ -20,6 +20,7 @@ class GPCopula(nn.Module):
         self.device = device
         self.norm = norm 
         self.lstm_list = nn.ModuleList([nn.LSTM(1, d_hidden, n_layers, dropout=dr, batch_first=True) for _ in range(self.d_input)])
+        self.linear_list = nn.ModuleList([nn.Linear(d_hidden, 1) for _ in range(self.d_input)])
         
         self.d_map = nn.Linear(d_hidden, 1, bias=False)
         
@@ -36,21 +37,44 @@ class GPCopula(nn.Module):
         
         for i in range(self.d_input):
             _, (hidden, cell) = self.lstm_list[i](x[..., i:i+1])
-            hidden_list.append(hidden[-1:, ...])
 
-        _hidden = torch.cat(hidden_list, axis=0)
-        _hidden = _hidden.transpose(1, 0)
-            
-        mu = self.mu_activation(self.mu_map(_hidden))
+            if self.tau > 1: 
+                
+                tmp_hidden = []
+                tmp_hidden.append(hidden[-1:, ...])
+                
+                for _ in range(self.tau-1):
+                    tmp_z = self.linear_list[i](hidden[-1:, ... ].transpose(1, 0))
+                    _, (hidden, cell) = self.lstm_list[i](tmp_z, (hidden, cell))
+                    tmp_hidden.append(hidden[-1:, ...])
+                
+                hidden_ = torch.cat(tmp_hidden, dim=0)
+                hidden_list.append(hidden_.unsqueeze(0)) # (1, tau, batch_size, d_hidden)
+                    
+            else: 
+                hidden_list.append(hidden[-1:, ...].unsqueeze(0)) # (1, tau, batch_size, d_hidden)
 
-        d = self.softplus(self.d_map(_hidden))
-        v = self.v_map(_hidden)
-        
+        _hidden = torch.cat(hidden_list, dim=0) # (d_input, tau, batch_size, d_hidden)
+        _hidden = _hidden.transpose(2, 0) # (batch_size, tau, d_input, d_hidden)
+
+        mu = self.mu_activation(self.mu_map(_hidden)) # (batch_size, tau, d_input, 1)
+
+        d = self.softplus(self.d_map(_hidden)) # (batch_size, tau, d_input, 1)
+        v = self.v_map(_hidden) # (batch_size, tau, d_input, rank)
+
         sigma_term1 = torch.diag_embed(d.squeeze(-1))
-        sigma_term2 = torch.matmul(v, torch.transpose(v, 2, 1))
+        sigma_term2 = torch.matmul(v, torch.transpose(v, 3, 2))
         sigma = sigma_term1 + sigma_term2
-        
+
         return mu, sigma
+
+    def sample(self, mu, sigma, n):
+        mvn = MultivariateNormal(mu.squeeze(), sigma)
+        sample_ = mvn.rsample([n])
+        mean = sample_.mean(dim=0)
+        std = sample_.std(dim=0)
+        
+        return mean, std, sample_
 
 class GPNegL(nn.Module):
     def __init__(self, ecdf_list, device):
@@ -58,12 +82,12 @@ class GPNegL(nn.Module):
         self.ecdf_list = ecdf_list 
         self.device = device
         self.norm_dist = Normal(0, 1)
-        import math
-        self.pi = torch.tensor(math.pi).float().to(device)
         
     def forward(self, true, params):
+        d_input = true.shape[-1]
+        
         mu, sigma = params
-        L, info = torch.linalg.cholesky_ex(sigma)
+        L, _ = torch.linalg.cholesky_ex(sigma)
         L_inverse = torch.inverse(L)
         det_L = torch.det(L)
         
@@ -73,7 +97,7 @@ class GPNegL(nn.Module):
         emp_quantile = torch.cat(emp_quantile_, dim=-1).to(self.device)
         gc_output = self.norm_dist.icdf(torch.clip(emp_quantile, min=0.001, max=0.999))
         
-        return torch.log(det_L).mean() + (0.5 *  torch.square(L_inverse @ (gc_output.transpose(1, 2) - mu))).sum(dim=1).mean()
+        return torch.log(det_L).mean() + (0.5 *  torch.square(L_inverse @ (gc_output.unsqueeze(-1) - mu))).sum(dim=1).mean()    
 
 def train(model, loader, criterion, optimizer, device):
     
