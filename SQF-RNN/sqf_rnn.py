@@ -120,7 +120,6 @@ def evaluate(model, loader, criterion, device):
         
         return sum(total_loss)/len(total_loss)
     
-# %%
 class LinearSplineCRPS(nn.Module):
     def __init__(self, d_input, device):
         super(LinearSplineCRPS, self).__init__()
