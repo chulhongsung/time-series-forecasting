@@ -8,6 +8,8 @@ Some models are revised for multivariate time series forecasting
 
 - `seq2seq`  `NeurIPS 2014` [Sequence to Sequence Learning with Neural Network](https://arxiv.org/abs/1409.3215)
 
+- `SQF-RNN` `AISTAT 2019` [Probabilistic Forecasting with Spline Quantile Function RNNs](http://proceedings.mlr.press/v89/gasthaus19a/gasthaus19a.pdf)
+
 -  `TFT` `IJF 2019` [Temporal Fusion Transformer for Interpretable Multi-horizon Time Series Forecasting](https://arxiv.org/pdf/1912.09363.pdf) ([official code](https://github.com/google-research/google-research/tree/master/tft))  
 
 - `PessTFT` Pessimistic TFT model to forecast extreme events by chulhongsung 
