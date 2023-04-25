@@ -12,7 +12,7 @@ Some models are revised for multivariate time series forecasting
 
 -  `TFT` `IJF 2019` [Temporal Fusion Transformer for Interpretable Multi-horizon Time Series Forecasting](https://arxiv.org/pdf/1912.09363.pdf) ([official code](https://github.com/google-research/google-research/tree/master/tft))  
 
-- `PessTFT` Pessimistic TFT model to forecast extreme events by chulhongsung 
+- `PessTFT` Pessimistic TFT model to forecast extreme events
 
 - `DeepAR` `IJF 2020` [DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks](https://arxiv.org/pdf/1704.04110.pdf)  
 
