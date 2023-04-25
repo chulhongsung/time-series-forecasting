@@ -32,7 +32,7 @@ Some models are revised for multivariate time series forecasting
 
 - `ProTran` `NeurIPS 2021`  [Probabilistic Transformer for Time Series Analysis ](https://proceedings.neurips.cc/paper/2021/file/c68bd9055776bf38d8fc43c0ed283678-Paper.pdf) 
 
-- `ProTran_v2` ProTran model which contains known future inputs by chulhongsung 
+- `ProTran_v2` ProTran model which contains known future inputs
 
 - `AAAI 2021` [Temporal Latent Auto-Encoder: A Method for Probabilistic Multivariate Time Series Forecasting](https://arxiv.org/pdf/2101.10460.pdf)  
 
