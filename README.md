@@ -22,6 +22,8 @@ Some models are revised for multivariate time series forecasting
 
 - `NeurIPS 2020` [Normalizing Kalman Filters for Multivariate Time Series Analysis](https://proceedings.neurips.cc/paper/2020/file/1f47cef5e38c952f94c5d61726027439-Supplemental.pdf) 
 
+- `ICML 2020` [Transformer Hawkes Process](https://arxiv.org/pdf/2002.09291.pdf)
+
 - `ICLR 2021` [N-BEATS: Neural Bais Expansion Analysis for Interpretable Time Series Forecasting ](https://arxiv.org/pdf/1905.10437.pdf) ([official code](https://github.com/ServiceNow/N-BEATS)) 
 
 - `ECMLPKDD 2022` [U-Net Inspired Transformer Architecture for Far Horizon Time Series Forecasting](https://2022.ecmlpkdd.org/wp-content/uploads/2022/09/sub_943.pdf)([official code](https://github.com/18kiran12/Yformer-Time-Series-Forecasting)) 
