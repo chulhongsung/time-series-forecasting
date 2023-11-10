@@ -50,6 +50,12 @@ Some models are revised for multivariate time series forecasting
 
 - `ICLR 2022` [Learning to Remember Patterns: Pattern Matching Memory Networks for Traffic Forecasting ](https://arxiv.org/pdf/2110.10380.pdf) ([official code](https://github.com/HyunWookL/PM-MemNet)) 
 
+### Image-based time-series forecasting
+
+- `Neural Networks 2023` [Image-based time series forecasting: A deep convolutional neural network approach](https://www.sciencedirect.com/science/article/pii/S0893608022003902?via%3Dihub)
+
+- `NeurIPS 2023` [Time Series as Images: Vision Transformer for Irregularly Sampled Time Series](https://arxiv.org/pdf/2303.12799.pdf) ([official code](https://github.com/Leezekun/ViTST))
+
 ### Calibration
 
 - `ICML 2018` [Accurate Uncertainties for Deep Learning Using Calibrated Regression](https://arxiv.org/pdf/1807.00263.pdf)
